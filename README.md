@@ -25,7 +25,7 @@ These values are save to EEPROM so they are preserved in the case of power loss 
 
 Automatic watering with the DC pump starts if the top moisture sensor reading goes below the set low threshold, goes on for 3 seconds and stops. This happens until the 
 bottom moisture sensor reads as if it is in water. This means that the water has started to come through the bottom soil and the plant is watered. There is also a manual
-watering option if the user wants.
+watering option if the user wants. The pump is connected to Arduino through a current-amplifying circuit, done with a NPN transistor. The digital pin which the pump is connected (7) goes to the base of the transistor through a 1k Ohm resistor and the pin is default high. The collector of the transistor is grounded and the emitter is connected to the negative side of the pump. When a button is pressed or the automatic watering triggers, the pin's state is changed to low. The transistor becomes conductive and the pump gets enough current to start working. Transistor in this case is TIP126.
 
 There are 3 different alarm sounds/songs for air temperature low, water temperature low and water level low. These thresholds can also be modified by the user and are also
 saved to EEPROM memory.
